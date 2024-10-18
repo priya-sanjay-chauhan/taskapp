@@ -44,7 +44,11 @@
         <!-- <app-add-user [allUsers]="usersData"  [deletedUserIds]="deletedUserIds"></app-add-user> -->
 
 
-        <app-add-user></app-add-user>
+        <app-add-user 
+      [existingUserIds]="existingUserIds"
+      [deletedUserIds]="deletedUserIds"
+      (userAdded)="onUserAdded($event)">
+    </app-add-user>
 
 
     </div>

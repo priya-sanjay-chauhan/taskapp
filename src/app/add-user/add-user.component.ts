@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserdataService } from '../services/userdata.service';
 import { DashboardComponent } from '../dashboard/dashboard.component';
@@ -9,6 +9,11 @@ import { DashboardComponent } from '../dashboard/dashboard.component';
   styleUrls: ['./add-user.component.css']
 })
 export class AddUserComponent {
+
+  @Input() existingUserIds: number[] = [];
+  @Input() deletedUserIds: number[] = [];
+
+  @Output() userAdded = new EventEmitter<any>();
 
   addUserForm: FormGroup;
   idError: string = ''; 
@@ -26,21 +31,17 @@ export class AddUserComponent {
  
   onSubmit(): void {
     const { id, name, email, address } = this.addUserForm.value;
-    const parsedId = parseInt(id); 
-
-    
-    const existingUserIds = this.dashboard.existingUserIds;
-    const deletedUserIds = this.dashboard.deletedUserIds;
+    const newId = parseInt(id); 
 
    
-    if (existingUserIds.includes(parsedId) || deletedUserIds.includes(parsedId)) {
+    if (this.existingUserIds.includes(newId) || this.deletedUserIds.includes(newId)) {
       this.idError = 'ID already exists or was deleted';
     } else {
       this.idError = ''; 
 
       
       const newUser = {
-        id: parsedId,
+        id: newId,
         name: name,
         email: email,
         address: {
@@ -51,10 +52,9 @@ export class AddUserComponent {
       };
 
      
-      this.userDataService.addUser(newUser);
+      // this.userDataService.addUser(newUser);
 
-   
-      this.dashboard.existingUserIds.push(parsedId);
+      this.userAdded.emit(newUser);
 
       this.addUserForm.reset();
     }

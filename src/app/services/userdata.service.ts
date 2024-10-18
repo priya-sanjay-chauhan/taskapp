@@ -34,9 +34,6 @@ export class UserdataService implements OnDestroy {
       
   }
 
-  // getUsers(): Observable<any[]>{
-  //   return this.usersSubject.asObservable()
-  // }
 
 
  startInterval(){
@@ -46,38 +43,13 @@ export class UserdataService implements OnDestroy {
    }
 
 
-  addUser(newUser: any) {
-
-    // newUser.id = this.currentId++;
-
-
-    
-
-    
-    const currentUsers = this.usersSubject.getValue();
-
-    // if (currentUsers.some(user => user.id === newUser.id)) {
-    //   console.error("User ID already exists. Cannot add user.");
-    //   return; // Prevent adding user with duplicate ID
-    // }
-
-    currentUsers.push(newUser);
-    this.usersSubject.next(currentUsers); 
-    console.log(currentUsers)
-
-    // const currentUsers=this.usersSubject.value;
-    // this.usersSubject.next([...currentUsers,newUser])
-  }
-
   
 
-
-
   unsubscribe(){
-    if(this.intervalSubscription){
-      this.intervalSubscription.unsubscribe()
-      console.log("unsubscribe interval")
-    }
+    // if(this.intervalSubscription){
+    //   this.intervalSubscription.unsubscribe()
+    //   console.log("unsubscribe interval")
+    // }
 
     if(this.subscription){
       this.subscription.unsubscribe()
@@ -89,8 +61,5 @@ export class UserdataService implements OnDestroy {
     this.unsubscribe(); 
   }
 
-  // getCurrentUsers() {
-  //   return this.usersSubject.getValue(); // Return current users
-  // }
 
 }

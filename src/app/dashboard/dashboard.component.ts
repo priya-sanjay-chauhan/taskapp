@@ -26,4 +26,9 @@ export class DashboardComponent {
       this.existingUserIds = this.usersData.map(user => user.id); 
     }
   }
+
+  onUserAdded(newUser: any) {
+    this.usersData.push(newUser); 
+    this.existingUserIds.push(newUser.id); 
+  }
 }

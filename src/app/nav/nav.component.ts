@@ -17,7 +17,8 @@ export class NavComponent {
     { name: 'Dashboard', path: 'dashboard' },
     { name: 'Contact', path: 'contact' },
     { name: 'About', path: 'about' },
-    { name: 'Logout', path: '' }
+    { name: 'Logout', path: '' },
+    { name: 'Insights', path: 'insights' }
   ];
 
  

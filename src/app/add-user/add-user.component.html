@@ -15,16 +15,25 @@
       <div>
         <label for="name">Name</label>
         <input id="name" formControlName="name" />
+        <div *ngIf="addUserForm.get('name').invalid && addUserForm.get('name').touched">
+          <span>Name is required</span>
+        </div>
       </div>
   
       <div>
         <label for="email">Email</label>
         <input id="email" formControlName="email" />
+        <div *ngIf="addUserForm.get('email').invalid && addUserForm.get('email').touched">
+          <span>Email is required</span>
+        </div>
       </div>
   
       <div>
         <label for="address">Address</label>
         <input id="address" formControlName="address" />
+        <div *ngIf="addUserForm.get('address').invalid && addUserForm.get('address').touched">
+          <span>Address is required</span>
+        </div>
       </div>
   
       <button type="submit">Add</button>

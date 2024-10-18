@@ -23,7 +23,8 @@ import { AddUserComponent } from './add-user/add-user.component';
     ContactComponent,
     AboutComponent,
     LogoutComponent,
-    AddUserComponent
+    AddUserComponent,
+    
   ],
   imports: [
     BrowserModule,
